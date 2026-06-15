@@ -25,6 +25,7 @@
 
     <button
       class="nav__toggle"
+      [class.open]="menuOpen"
       type="button"
       (click)="toggle()"
       [attr.aria-expanded]="menuOpen"
@@ -36,8 +37,23 @@
 
   <div class="nav__mobile" [class.open]="menuOpen" [attr.aria-hidden]="!menuOpen">
     @for (link of navLinks; track link.target) {
-      <button type="button" class="nav__mobile-link" (click)="scroll(link.target)">{{ link.label }}</button>
+      <button
+        type="button"
+        class="nav__mobile-link"
+        [class.active]="activeSection === link.target"
+        (click)="scroll(link.target)"
+      >
+        {{ link.label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
     }
-    <button type="button" class="nav__mobile-cta" (click)="scroll('soporte')">Empezar</button>
+    <button type="button" class="nav__mobile-cta" (click)="scroll('soporte')">
+      Empezar
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </button>
   </div>
 </div>
