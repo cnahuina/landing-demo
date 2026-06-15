@@ -447,13 +447,9 @@
 
 @media (max-width: 900px) {
   .feat {
-    // En pantallas chicas la trama se reubica como acento decorativo en la
-    // esquina superior derecha, contenida para no cubrir tabs ni contenido.
+    // La trama decorativa se oculta en pantallas chicas.
     &__trama {
-      height: auto;
-      width: 46%;
-      max-width: 220px;
-      opacity: 0.55;
+      display: none;
     }
 
     &__top {
