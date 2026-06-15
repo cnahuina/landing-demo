@@ -205,6 +205,15 @@
   }
 }
 
+// La trama solo luce bien en pantallas anchas (card centrada con margen).
+// En tablet/móvil la card ocupa casi todo el ancho y la trama se asoma en el
+// espacio blanco, así que se oculta.
+@media (max-width: 900px) {
+  .sp__trama {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .sp {
     padding-left: 16px;
