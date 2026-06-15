@@ -444,6 +444,12 @@
 
 @media (max-width: 900px) {
   .feat {
+    // La trama decorativa estorba sobre los tabs/contenido en pantallas
+    // chicas; se oculta.
+    &__trama {
+      display: none;
+    }
+
     &__top {
       flex-direction: column;
       align-items: flex-start;
