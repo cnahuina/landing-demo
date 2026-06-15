@@ -13,8 +13,8 @@ export class GuidelinesComponent {
     { label: 'Icon', icon: 'icon' },
     { label: 'Layout', icon: 'layout' },
     { label: 'Calidad', icon: 'star' },
+    { label: 'Datos', icon: 'data' },
     { label: 'Accesibilidad', icon: 'access' },
-    { label: 'Contenido', icon: 'content' },
-    { label: 'Datos', icon: 'data' }
+    { label: 'Contenido', icon: 'content' }
   ];
 }
