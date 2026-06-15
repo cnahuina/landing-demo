@@ -414,7 +414,8 @@
 
     &__content {
       border-bottom-left-radius: clamp(72px, 26vw, 140px);
-      padding-block: 52px 88px;
+      // Padding superior amplio para que el nav fijo no tape las formas/título.
+      padding-block: 104px 88px;
       min-height: 0;
     }
 
@@ -474,6 +475,7 @@
 
     &__separator {
       display: block;
+      align-self: center;
       width: 1px;
       height: 28px;
       margin: 0;
