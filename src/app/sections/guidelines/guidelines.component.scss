@@ -1,5 +1,5 @@
 .gl {
-  padding: 0 0 40px;
+  padding: 0 20px 40px;
 
   &__wrapper {
     padding: 0;
@@ -101,9 +101,19 @@
     gap: 24px;
   }
 
+  // Enlaces en cuadrícula de 3 columnas.
   .gl__links {
-    flex-wrap: wrap;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 16px;
+    width: 100%;
+  }
+
+  .gl__link {
+    align-items: center;
+    gap: 8px;
+    white-space: normal;
+    line-height: 1.25;
   }
 }
 
@@ -113,19 +123,11 @@
     gap: 20px;
   }
 
-  // Enlaces en cuadrícula de 3 columnas.
   .gl__links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 10px;
-    width: 100%;
+    gap: 22px 10px;
   }
 
   .gl__link {
-    align-items: flex-start;
-    gap: 6px;
-    white-space: normal;
     font-size: 0.8125rem;
-    line-height: 1.25;
   }
 }
