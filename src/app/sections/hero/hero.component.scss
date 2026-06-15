@@ -357,19 +357,97 @@
 
 @media (max-width: 640px) {
   .hero {
+    // Franja naranja delgada (con trama) a la izquierda.
     &__wrapper {
-      padding-left: 0;
+      padding-left: 18px;
     }
 
-    &::before { display: none; }
-
-    &__dots,
-    &__scroll-next {
+    &__dots {
       display: none;
     }
 
     &__content {
-      border-bottom-left-radius: 40px;
+      border-bottom-left-radius: clamp(72px, 26vw, 140px);
+      padding-block: 52px 88px;
+      min-height: 0;
+    }
+
+    // Contenido centrado.
+    &__inner {
+      align-items: center;
+      text-align: center;
+      padding-inline: 24px;
+      gap: 36px;
+    }
+
+    &__title-block {
+      align-items: center;
+      gap: 24px;
+    }
+
+    &__shapes {
+      width: clamp(150px, 42vw, 220px);
+      margin-inline: auto;
+    }
+
+    &__headline {
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    &__hl-line1 {
+      white-space: normal;
+      font-size: clamp(48px, 14vw, 72px);
+      line-height: 1;
+    }
+
+    &__hl-line2 {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+
+    &__hl-before,
+    &__hl-mark {
+      font-size: clamp(30px, 9vw, 48px);
+      white-space: normal;
+      text-align: center;
+    }
+
+    // Meta en columna centrada con separador vertical.
+    &__meta {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      padding-left: 0;
+    }
+
+    &__separator {
+      display: block;
+      width: 1px;
+      height: 28px;
+      margin: 0;
+    }
+
+    &__copy {
+      text-align: center;
+      max-width: 320px;
+    }
+
+    // Botón de scroll centrado al pie del hero.
+    &__scroll-next {
+      display: grid;
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+
+      &:hover { transform: translateX(-50%) translateY(3px); }
+      &:active { transform: translateX(-50%) translateY(5px); }
     }
 
     &__fab {
