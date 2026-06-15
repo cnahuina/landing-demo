@@ -32,6 +32,21 @@
     z-index: 0;
   }
 
+  // ── Trama horizontal superior (solo móvil) ───────────────────────────────
+  &__trama-mobile {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    object-fit: cover;
+    object-position: center top;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
   // ── Trama de fondo (PNG) ─────────────────────────────────────────────────
   // Textura decorativa que cubre toda la sección oscura, muy sutil detrás
   // del contenido.
@@ -322,13 +337,9 @@
     padding: 72px 0 56px;
     border-radius: 28px;
 
-    // En móvil la trama pasa de tira lateral a banda horizontal superior.
-    &__trama {
-      width: 100%;
-      height: 48px;
-      object-fit: cover;
-      object-position: center top;
-    }
+    // En móvil se usa la trama horizontal dedicada y se oculta la lateral.
+    &__trama { display: none; }
+    &__trama-mobile { display: block; }
 
     // Se elimina el padding-left grande (ya no hay tira lateral que esquivar).
     &__inner {
