@@ -220,8 +220,10 @@
       grid-template-columns: 1fr;
     }
 
+    // En móvil la card ocupa todo el ancho; la trama solo se asomaba de forma
+    // poco prolija por el borde izquierdo, así que se oculta.
     &__trama {
-      width: clamp(160px, 45vw, 220px);
+      display: none;
     }
   }
 }

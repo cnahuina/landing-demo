@@ -356,6 +356,18 @@
     &__year-select { margin-top: 0; }
 
     &__stats { grid-template-columns: 1fr; }
-    &__logos { grid-template-columns: repeat(2, 1fr); }
+
+    &__logos {
+      grid-template-columns: repeat(2, 1fr);
+
+      // Logos centrados en cada celda y separadores por fila consistentes.
+      li {
+        justify-content: center;
+        padding: 18px 8px;
+
+        &:nth-child(n+6) { border-top: none; }
+        &:nth-child(n+3) { border-top: 1px solid #1f2228; }
+      }
+    }
   }
 }
