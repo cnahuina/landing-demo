@@ -102,10 +102,11 @@
     gap: 8px;
     margin-bottom: 32px;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 
     button {
       position: relative;
+      z-index: 1;
       border: 0;
       background: none;
       color: #9ca3af;
@@ -114,6 +115,8 @@
       padding: 10px 22px;
       border-radius: 10px;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: background 0.18s, color 0.18s;
 
       &.active {
@@ -444,10 +447,13 @@
 
 @media (max-width: 900px) {
   .feat {
-    // La trama decorativa estorba sobre los tabs/contenido en pantallas
-    // chicas; se oculta.
+    // En pantallas chicas la trama se reubica como acento decorativo en la
+    // esquina superior derecha, contenida para no cubrir tabs ni contenido.
     &__trama {
-      display: none;
+      height: auto;
+      width: 46%;
+      max-width: 220px;
+      opacity: 0.55;
     }
 
     &__top {
@@ -485,7 +491,7 @@
 
 @media (max-width: 640px) {
   .feat {
-    padding: 56px 0;
+    padding: 24px 0 56px;
 
     &__tabs {
       gap: 8px;

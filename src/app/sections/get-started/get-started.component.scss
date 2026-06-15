@@ -165,6 +165,14 @@
 }
 
 @media (max-width: 600px) {
+  .gs {
+    padding: 56px 0 48px;
+
+    &__header {
+      margin-bottom: 40px;
+    }
+  }
+
   .gs__grid {
     grid-template-columns: 1fr;
   }

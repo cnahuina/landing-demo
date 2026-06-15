@@ -27,6 +27,10 @@ export class FeaturedComponent {
     }
   };
 
+  setTab(tab: 'diseno' | 'desarrollo'): void {
+    this.activeTab = tab;
+  }
+
   get c() {
     return this.content[this.activeTab];
   }

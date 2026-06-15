@@ -33,18 +33,20 @@
     <!-- Tabs -->
     <div class="feat__tabs" role="tablist" aria-label="Tipo de guía">
       <button
+        type="button"
         role="tab"
         class="feat__tab feat__tab--diseno"
         [class.active]="activeTab === 'diseno'"
-        (click)="activeTab = 'diseno'"
+        (click)="setTab('diseno')"
         [attr.aria-selected]="activeTab === 'diseno'">
         Diseño
       </button>
       <button
+        type="button"
         role="tab"
         class="feat__tab feat__tab--dev"
         [class.active]="activeTab === 'desarrollo'"
-        (click)="activeTab = 'desarrollo'"
+        (click)="setTab('desarrollo')"
         [attr.aria-selected]="activeTab === 'desarrollo'">
         Desarrollo
       </button>
