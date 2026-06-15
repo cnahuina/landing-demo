@@ -403,6 +403,18 @@
 
 @media (max-width: 640px) {
   .hero {
+    // Permite que el botón de scroll se monte sobre la costura con la
+    // siguiente sección.
+    overflow: visible;
+
+    // Trama visible en la franja izquierda (sin sobre-escalar como con cover).
+    &::before {
+      display: block;
+      background-repeat: repeat;
+      background-size: auto 320px;
+      background-position: left top;
+    }
+
     // Franja naranja delgada (con trama) a la izquierda.
     &__wrapper {
       padding-left: 18px;
@@ -486,13 +498,15 @@
       max-width: 320px;
     }
 
-    // Botón de scroll centrado al pie del hero.
+    // Botón de scroll centrado y montado sobre la costura con la sección
+    // siguiente.
     &__scroll-next {
       display: grid;
       position: absolute;
       left: 50%;
-      bottom: 22px;
+      bottom: -22px;
       transform: translateX(-50%);
+      z-index: 20;
 
       &:hover { transform: translateX(-50%) translateY(3px); }
       &:active { transform: translateX(-50%) translateY(5px); }
