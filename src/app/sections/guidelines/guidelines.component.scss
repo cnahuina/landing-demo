@@ -101,19 +101,10 @@
     gap: 24px;
   }
 
-  // Enlaces en cuadrícula de 3 columnas.
+  // Flujo natural: los enlaces se acomodan en filas según su ancho real.
   .gl__links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px 16px;
-    width: 100%;
-  }
-
-  .gl__link {
-    align-items: center;
-    gap: 8px;
-    white-space: normal;
-    line-height: 1.25;
+    flex-wrap: wrap;
+    gap: 22px 32px;
   }
 }
 
@@ -124,10 +115,6 @@
   }
 
   .gl__links {
-    gap: 22px 10px;
-  }
-
-  .gl__link {
-    font-size: 0.8125rem;
+    gap: 20px 24px;
   }
 }
