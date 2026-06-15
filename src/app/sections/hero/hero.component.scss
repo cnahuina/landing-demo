@@ -23,7 +23,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/trama-section.png');
+    background-image: url('../../../assets/trama-section.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -503,7 +503,7 @@
     &__scroll-next {
       display: grid;
       position: absolute;
-      left: 50%;
+      left: 52%;
       bottom: -22px;
       transform: translateX(-50%);
       z-index: 20;
