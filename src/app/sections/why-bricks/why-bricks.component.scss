@@ -134,6 +134,12 @@
     &__lead {
       padding-left: 0;
       padding-right: 0;
+      text-align: center;
+
+      p {
+        max-width: 520px;
+        margin-inline: auto;
+      }
     }
 
     &__cards {
