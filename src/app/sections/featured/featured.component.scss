@@ -101,6 +101,8 @@
     display: flex;
     gap: 8px;
     margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
 
     button {
       position: relative;
@@ -463,9 +465,14 @@
       min-width: 0;
     }
 
+    // Mismo orden en ambos tabs en móvil: texto arriba, preview abajo.
+    &__copy {
+      order: -1;
+      border-bottom: 1px solid #f0e0c8;
+    }
+
     &__preview {
       border-right: none;
-      border-bottom: 1px solid #f0e0c8;
     }
   }
 }
