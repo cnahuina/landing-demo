@@ -1,0 +1,82 @@
+<section class="sp" id="soporte">
+
+  <!-- Trama decorativa (bottom-left, parcialmente detrás de la card) -->
+  <img
+    class="sp__trama"
+    src="trama-soporte.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+
+  <div class="sp__layout">
+    <!-- Form card -->
+    <div class="sp__card">
+      @if (!submitted) {
+        <div class="sp__card-head">
+          <h2>Ayúdanos a evolucionar</h2>
+          <p>Reporta bugs o solicita nuevos componentes. Tu feedback es esencial para que Bricks siga creciendo con el equipo.</p>
+        </div>
+
+        <form class="sp__form-body" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <div class="sp__row">
+            <div class="sp__field">
+              <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="correo@empresa.com"
+                [class.error]="form.controls['email'].invalid && form.controls['email'].touched"
+              />
+            </div>
+            <div class="sp__field">
+              <label for="type">Tipo de ticket <span aria-hidden="true">*</span></label>
+              <select
+                id="type"
+                formControlName="type"
+                [class.error]="form.controls['type'].invalid && form.controls['type'].touched"
+              >
+                <option value="" disabled>Elija un ticket</option>
+                @for (t of ticketTypes; track t) {
+                  <option [value]="t">{{ t }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="sp__field">
+            <label for="desc">Descripción</label>
+            <textarea
+              id="desc"
+              formControlName="description"
+              rows="6"
+              placeholder="Describe el problema o la funcionalidad requerida."
+              [class.error]="form.controls['description'].invalid && form.controls['description'].touched"
+            ></textarea>
+          </div>
+
+          <div class="sp__actions">
+            <button type="submit" class="sp__submit">
+              Crear ticket
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      } @else {
+        <div class="sp__success">
+          <div class="sp__success-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h3>¡Ticket creado!</h3>
+          <p>Gracias por tu feedback. Nuestro equipo lo revisará pronto.</p>
+        </div>
+      }
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,116 @@
+.footer {
+  background: #151515;
+  padding: 64px 0;
+  border-radius: 32px 32px 0 0;
+  position: relative;
+  overflow: hidden;
+
+  // Trama de fondo decorativa (PNG) — textura sutil que cubre el footer
+  &__trama-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.13;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__logo-img {
+    display: block;
+    height: 24px;
+    width: auto;
+  }
+
+  &__copy {
+    font-size: 0.875rem;
+    color: #5c5c5c;
+    margin: 0;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #f4f5f7;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: transparent;
+    transition: color 0.15s, text-decoration-color 0.15s;
+
+    &:hover {
+      color: #fff;
+      text-decoration-color: rgba(255,255,255,0.4);
+    }
+  }
+
+  &__sep {
+    width: 1.5px;
+    height: 20px;
+    background: #f4f5f7;
+    opacity: 0.3;
+    border-radius: 999px;
+    display: inline-block;
+    user-select: none;
+  }
+
+  &__storybook {
+    display: flex;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover { opacity: 1; }
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .footer__nav {
+    gap: 20px;
+  }
+}

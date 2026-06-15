@@ -1,0 +1,47 @@
+<section class="why" id="adopcion">
+
+  <!-- Fondo texturizado -->
+  <div class="why__bg" aria-hidden="true"></div>
+
+  <div class="why__grid">
+
+    <article class="why__lead">
+      <h2>Por qué construimos con Bricks</h2>
+      <p>Es la herramienta que potencia nuestra forma de crear. Un estándar visual y de código, que mantiene a todo el equipo en sincronía. Asegura resultados funcionales y calidad constante.</p>
+    </article>
+
+    <ul class="why__cards">
+      @for (card of cards; track card.title) {
+        <li class="why__card">
+          <div class="why__icon" aria-hidden="true">
+            @if (card.icon === 'eye') {
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            }
+            @if (card.icon === 'bolt') {
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            }
+            @if (card.icon === 'team') {
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            }
+          </div>
+          <div class="why__card-content">
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+
+  </div>
+
+</section>

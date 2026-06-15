@@ -1,0 +1,238 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding-top: 20px;
+  padding-inline: 40px;
+  pointer-events: none;
+
+  @media (max-width: 1368px) {
+    padding-inline: 32px;
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 20px;
+    padding-top: 16px;
+  }
+}
+
+// ─── Wrapper (centering + scroll state context) ───────────────────────────
+.nav__wrapper {
+  max-width: 1248px;
+  margin-inline: auto;
+  position: relative;
+  pointer-events: auto;
+}
+
+// ─── Pill nav bar ────────────────────────────────────────────────────────
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px 10px 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 250px;
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+
+  .scrolled & {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(230, 232, 237, 0.7);
+    box-shadow: 0 4px 32px rgba(17, 19, 24, 0.09);
+  }
+}
+
+// ─── Brand / Logo ─────────────────────────────────────────────────────────
+.nav__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav__logo {
+  display: block;
+  height: 26px;
+  width: auto;
+}
+
+// ─── Desktop navigation ───────────────────────────────────────────────────
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__link {
+  position: relative;
+  border: 0;
+  background: none;
+  color: #5c5c5c;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+
+  &:hover,
+  &.active {
+    color: #111318;
+  }
+
+  &:hover .nav__dot {
+    opacity: 1;
+  }
+
+  &.active .nav__dot {
+    opacity: 1;
+    background: #ff900e;
+  }
+}
+
+.nav__dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #5c5c5c;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+// ─── CTA button ───────────────────────────────────────────────────────────
+.nav__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: #151515;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0 16px;
+  height: 40px;
+  border-radius: 120px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #2c2f36;
+  }
+}
+
+// ─── Hamburger toggle (mobile only) ─────────────────────────────────────
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid rgba(100, 100, 100, 0.25);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #111318;
+    border-radius: 2px;
+  }
+}
+
+// ─── Mobile dropdown ─────────────────────────────────────────────────────
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 16px 40px rgba(17, 19, 24, 0.12);
+
+  &.open {
+    display: flex;
+  }
+}
+
+.nav__mobile-link {
+  border: 0;
+  background: none;
+  color: #111318;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.nav__mobile-cta {
+  margin-top: 8px;
+  border: 0;
+  background: #151515;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #2c2f36;
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────
+@media (max-width: 768px) {
+  .nav__right {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+}

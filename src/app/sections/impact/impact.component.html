@@ -1,0 +1,143 @@
+<section class="impact" id="impacto">
+
+  <!-- Trama lateral decorativa (SVG provisto por diseño) -->
+  <img
+    class="impact__trama"
+    src="trama-lateral.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+
+  <!-- Trama de fondo decorativa (PNG provisto por diseño) -->
+  <img
+    class="impact__trama-bg"
+    src="trama-section.png"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+
+  <div class="impact__inner">
+
+    <!-- Intro: title left, year badge right -->
+    <div class="impact__intro">
+      <div>
+        <h2>El impacto de nuestra eficiencia</h2>
+        <p>Bricks no solo estandariza, acelera. Descubre cómo nuestro sistema optimiza el tiempo y escala la calidad de los productos digitales.</p>
+      </div>
+      <div class="impact__year-select">
+        <button
+          type="button"
+          class="impact__year"
+          [class.open]="menuOpen()"
+          (click)="toggleMenu()"
+          [attr.aria-expanded]="menuOpen()"
+          aria-haspopup="listbox"
+        >
+          <span>Año {{ selectedYear() }}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        @if (menuOpen()) {
+          <ul class="impact__year-menu" role="listbox">
+            @for (y of years(); track y.year) {
+              <li
+                class="impact__year-option"
+                [class.selected]="y.year === selectedYear()"
+                role="option"
+                [attr.aria-selected]="y.year === selectedYear()"
+                (click)="selectYear(y.year)"
+              >
+                Año {{ y.year }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <ul class="impact__stats">
+      @for (stat of stats(); track stat.label) {
+        <li class="impact__stat">
+
+          <!-- Ghost icon (background) -->
+          <span class="impact__stat-icon-ghost" aria-hidden="true">
+            @if (stat.icon === 'team') {
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            }
+            @if (stat.icon === 'download') {
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            }
+            @if (stat.icon === 'clock') {
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            }
+          </span>
+
+          <div class="impact__stat-header">
+            <div class="impact__stat-label-row">
+              <span class="impact__stat-icon" aria-hidden="true">
+                @if (stat.icon === 'team') {
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                }
+                @if (stat.icon === 'download') {
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                }
+                @if (stat.icon === 'clock') {
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                }
+              </span>
+              <span class="impact__stat-label">{{ stat.label }}</span>
+            </div>
+          </div>
+
+          <strong class="impact__stat-value">{{ stat.value }}</strong>
+          <span class="impact__stat-growth">{{ stat.growth }}</span>
+
+        </li>
+      }
+    </ul>
+
+    <hr class="impact__divider" />
+
+    <!-- Trusted logos -->
+    <div class="impact__trusted">
+      <h3>
+        <span class="impact__trusted-dot" aria-hidden="true"></span>
+        Equipos que confían en Bricks
+      </h3>
+      <ul class="impact__logos">
+        @for (company of companies(); track company.name) {
+          <li>
+            <img
+              [src]="company.logo"
+              [alt]="company.name"
+              class="impact__logo-img"
+              loading="lazy"
+              draggable="false"
+            />
+          </li>
+        }
+      </ul>
+    </div>
+
+  </div><!-- /impact__inner -->
+</section>

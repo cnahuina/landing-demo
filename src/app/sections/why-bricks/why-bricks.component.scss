@@ -1,0 +1,149 @@
+// ─── ContextoDS / Why Bricks ─────────────────────────────────────────────────
+// La sección es un bloque naranja centrado al mismo ancho que el hero wrapper
+// (max-width: 1248px, margin-inline: auto).  El top-left sin radio crea
+// el empalme visual con el strip naranja izquierdo del hero.
+// ─────────────────────────────────────────────────────────────────────────────
+
+:host {
+  display: block;
+}
+
+.why {
+  // ── Fondo naranja full width ────────────────────────────────────────────
+  width: 100%;
+
+  // ── Forma: top-left sin radio → empalme con el strip del hero ───────────
+  border-radius: 0 54px 54px 54px;
+  overflow: hidden;
+
+  background: #ff900e;
+  position: relative;
+
+  padding-block: clamp(40px, 5vw, 72px);
+
+  // ── Background texture (trama-section.png) ───────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/trama-section.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+  }
+
+  // ── Grid: text col | cards col (contenido centrado a 1248px) ─────────────
+  &__grid {
+    max-width: 1248px;
+    margin-inline: auto;
+    padding-inline: clamp(24px, 3.5vw, 48px);
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  // ── Lead (left text column) ──────────────────────────────────────────────
+  &__lead {
+    padding-left: clamp(8px, 4vw, 52px);
+    padding-right: clamp(8px, 3vw, 36px);
+
+    h2 {
+      font-family: 'Poppins', 'Inter', sans-serif;
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #5d3405;
+      margin: 0 0 clamp(16px, 2vw, 28px);
+    }
+
+    p {
+      color: #151515;
+      font-size: clamp(0.875rem, 1.1vw, 1.0625rem);
+      line-height: 1.65;
+      margin: 0;
+    }
+  }
+
+  // ── Cards list (right column) ────────────────────────────────────────────
+  &__cards {
+    list-style: none;
+    margin: 0;
+    padding: clamp(0px, 2vw, 20px) clamp(8px, 4vw, 48px) clamp(0px, 2vw, 20px) 0;
+    display: grid;
+    gap: clamp(12px, 1.6vw, 20px);
+  }
+
+  // ── Card ─────────────────────────────────────────────────────────────────
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 28px);
+    padding-right: clamp(12px, 1.8vw, 24px);
+    background: rgba(255, 244, 231, 0.12);
+    border-radius: 20px;
+  }
+
+  // ── Card icon box ─────────────────────────────────────────────────────────
+  &__icon {
+    flex-shrink: 0;
+    width: clamp(72px, 8vw, 108px);
+    height: clamp(72px, 8vw, 108px);
+    background: #bd1717;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+  }
+
+  // ── Card text ─────────────────────────────────────────────────────────────
+  &__card-content {
+    flex: 1 1 0;
+    min-width: 0;
+
+    h3 {
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      font-weight: 700;
+      color: #5d3405;
+      margin: 0 0 clamp(4px, 0.5vw, 8px);
+    }
+
+    p {
+      font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+      color: #151515;
+      line-height: 1.55;
+      margin: 0;
+    }
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+@media (max-width: 900px) {
+  .why {
+    border-radius: 0 32px 32px 32px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__lead {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &__cards {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .why {
+    border-radius: 0 20px 20px 20px;
+  }
+}

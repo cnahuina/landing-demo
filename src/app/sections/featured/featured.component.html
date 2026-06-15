@@ -1,0 +1,128 @@
+<section class="feat" id="nuestros-componentes">
+
+  <!-- Trama vectorial decorativa (lado derecho) -->
+  <img
+    class="feat__trama"
+    src="trama-vector.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+
+  <!-- Figma: Featured panel uses x=152, width=1096 → narrow container (152px side margins) -->
+  <div class="container--narrow">
+    <!-- Header row -->
+    <div class="feat__top">
+      <div>
+        <h2>Nuestros componentes</h2>
+        <p>Garantizamos una gran experiencia visual y técnica en tus proyectos.</p>
+      </div>
+      <a class="feat__explore" href="#">
+        <span>
+          <strong>Explorar todo</strong>
+          <small>Más de 80 componentes disponibles</small>
+        </span>
+        <div class="feat__explore-arrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <div class="feat__tabs" role="tablist" aria-label="Tipo de guía">
+      <button
+        role="tab"
+        class="feat__tab feat__tab--diseno"
+        [class.active]="activeTab === 'diseno'"
+        (click)="activeTab = 'diseno'"
+        [attr.aria-selected]="activeTab === 'diseno'">
+        Diseño
+      </button>
+      <button
+        role="tab"
+        class="feat__tab feat__tab--dev"
+        [class.active]="activeTab === 'desarrollo'"
+        (click)="activeTab = 'desarrollo'"
+        [attr.aria-selected]="activeTab === 'desarrollo'">
+        Desarrollo
+      </button>
+    </div>
+
+    <!-- Panel -->
+    <div class="feat__panel" [class.feat__panel--dev]="activeTab === 'desarrollo'">
+      <!-- Preview area -->
+      <div class="feat__preview" aria-label="Vista previa del componente">
+        <div class="feat__browser-dots" aria-hidden="true">
+          <span style="background:#ff5f57"></span>
+          <span style="background:#febc2e"></span>
+          <span style="background:#28c840"></span>
+          <span class="feat__preview-label">{{ c.previewLabel }}</span>
+        </div>
+        <div class="feat__preview-body">
+          @if (activeTab === 'diseno') {
+            <div class="feat__annotation">
+              <span class="feat__annotation-tag">$color-interactive2-medium</span>
+            </div>
+            <div class="feat__component-row">
+              <button class="feat__nav-btn" aria-label="Anterior">‹</button>
+              <div class="feat__checkbox-demo">
+                <div class="feat__checkbox-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <span>Item name</span>
+              </div>
+              <button class="feat__nav-btn feat__nav-btn--active" aria-label="Siguiente">›</button>
+            </div>
+            <div class="feat__annotation">
+              <span class="feat__annotation-tag">$font-body-sm-medium</span>
+            </div>
+          } @else {
+            <div class="feat__install">
+              <button class="feat__nav-btn" aria-label="Anterior">‹</button>
+              <div class="feat__install-graph">
+                <span class="feat__install-node" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                </span>
+                <div class="feat__install-pills">
+                  <code class="feat__install-pill">npm install &#64;bricks/ng-components&#64;1.2.3</code>
+                  <code class="feat__install-pill">npm install &#64;bricks/style-dictionary&#64;0.1.8</code>
+                </div>
+              </div>
+              <button class="feat__nav-btn feat__nav-btn--active" aria-label="Siguiente">›</button>
+            </div>
+            <div class="feat__install-pager" aria-hidden="true">
+              <span class="on"></span><span></span><span></span>
+            </div>
+          }
+        </div>
+        <div class="feat__preview-footer">{{ c.footer }}</div>
+      </div>
+
+      <!-- Copy area -->
+      <div class="feat__copy">
+        <div class="feat__copy-icons" aria-hidden="true">
+          <span class="fi fi-eye"></span>
+          <span class="fi fi-sq"></span>
+          <span class="fi fi-sq fi-sq--sm"></span>
+          <span class="fi fi-sq fi-sq--alt"></span>
+          <span class="fi fi-sq fi-sq--dark"></span>
+        </div>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.description }}</p>
+        <a class="feat__cta" href="#">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Comenzar ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

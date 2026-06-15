@@ -1,0 +1,66 @@
+<section class="cl" id="changelog">
+  <div class="container cl__grid">
+    <!-- Left: changelog list -->
+    <div class="cl__list">
+      <div class="cl__header">
+        <h2>
+          <span class="cl__clock" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF9F1C" stroke-width="2.2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          Registro de Cambios
+        </h2>
+        <a class="cl__changelog-link" href="#">
+          Changelog
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="cl__entries">
+        @for (entry of entries(); track entry.version) {
+          <li class="cl__entry" [class.active]="entry.active">
+            <!-- Timeline dot + connector -->
+            <div class="cl__timeline">
+              <span class="cl__tl-dot" [class.active]="entry.active"></span>
+              <span class="cl__tl-line" [class.active]="entry.active"></span>
+            </div>
+            <!-- Content -->
+            <div class="cl__entry-content">
+              <div class="cl__entry-header">
+                <div class="cl__entry-info">
+                  <div class="cl__entry-register">
+                    <span class="cl__version-badge" [class.active]="entry.active">{{ entry.version }}</span>
+                    <span class="cl__entry-dot" [class.active]="entry.active" aria-hidden="true"></span>
+                    <span class="cl__date" [class.active]="entry.active">{{ entry.date }}</span>
+                  </div>
+                  <strong class="cl__entry-title" [class.active]="entry.active">{{ entry.title }}</strong>
+                </div>
+                <span class="cl__type-badge" [class.minor]="entry.type === 'MINOR'" [class.patch]="entry.type === 'PATCH'">
+                  {{ entry.type }}
+                </span>
+              </div>
+              <p class="cl__entry-desc">{{ entry.description }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Right: photo -->
+    <div class="cl__photo" aria-hidden="true">
+      <img src="img-changelog.jpg" alt="" class="cl__photo-img" draggable="false" />
+    </div>
+
+    <!-- Trama decorativa sobre la esquina inferior-izquierda de la foto -->
+    <img
+      class="cl__trama-miga"
+      src="trama-miga.svg"
+      alt=""
+      aria-hidden="true"
+      draggable="false"
+    />
+  </div>
+</section>

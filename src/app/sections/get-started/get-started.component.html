@@ -1,0 +1,48 @@
+<section class="gs" id="componentes">
+  <div class="container">
+    <header class="gs__header">
+      <h2>Empieza a construir</h2>
+      <p>Explora las herramientas diseñadas para tu perfil y comienza a implementar soluciones bajo los lineamientos de nuestra cultura de trabajo.</p>
+    </header>
+
+    <ul class="gs__grid">
+      @for (card of cards; track card.title) {
+        <li class="gs__card">
+          <div class="gs__card-body">
+            <div class="gs__icon" [style.--icon-color]="card.iconColor">
+              @if (card.icon === 'design') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                  <path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>
+                </svg>
+              }
+              @if (card.icon === 'code') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                </svg>
+              }
+              @if (card.icon === 'product') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              }
+            </div>
+
+            <div class="gs__card-text">
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
+            </div>
+          </div>
+
+          <a class="gs__link" href="#">
+            {{ card.cta }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

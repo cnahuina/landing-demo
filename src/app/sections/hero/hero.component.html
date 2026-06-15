@@ -1,0 +1,134 @@
+<section class="hero" id="inicio">
+
+  <!-- 1248px centered wrapper (igual que el Nav) -->
+  <div class="hero__wrapper">
+
+    <!-- Dots de progreso en el strip naranja izquierdo -->
+    <nav class="hero__dots" aria-label="Progreso de sección">
+      @for (section of sections; track section.id) {
+        <button
+          type="button"
+          class="hero__dot"
+          [class.hero__dot--active]="activeSection === section.id"
+          (click)="scrollTo(section.id)"
+          [attr.aria-label]="section.label"
+          [attr.aria-current]="activeSection === section.id ? 'true' : null"
+        ></button>
+      }
+    </nav>
+
+    <!-- Caja blanca -->
+    <div class="hero__content">
+
+      <!-- Contenido centrado a 1248px -->
+      <div class="hero__inner">
+
+        <!-- Title: shapes + headline -->
+        <div class="hero__title-block">
+          <img
+            class="hero__shapes"
+            src="hero-shape.svg"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <h1 class="hero__headline">
+            <span class="hero__hl-line1">Nuestra forma</span>
+            <span class="hero__hl-line2">
+              <span class="hero__hl-before">de pensar y</span>
+              <span class="hero__hl-mark">construir</span>
+            </span>
+          </h1>
+        </div>
+
+        <!-- Meta row: versión + separador + descripción -->
+        <div class="hero__meta">
+          <div class="hero__version">
+            <span class="hero__version-dot" aria-hidden="true"></span>
+            <span>Bricks Design System v 1.3.0</span>
+          </div>
+          <div class="hero__separator" aria-hidden="true"></div>
+          <p class="hero__copy">
+            Crea, escala y garantiza la calidad de cada idea. El estándar compartido
+            para entregar productos coherentes, eficientes y de alto impacto.
+          </p>
+        </div>
+
+      </div><!-- /hero__inner -->
+
+    </div><!-- /hero__content -->
+
+  </div><!-- /hero__wrapper -->
+
+  <!-- Scroll to next section / back to top -->
+  <button
+    class="hero__scroll-next"
+    [class.hero__scroll-next--up]="atBottom"
+    (click)="scrollToNext()"
+    [attr.aria-label]="atBottom ? 'Volver arriba' : 'Ir a la siguiente sección'"
+  >
+    @if (atBottom) {
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+        <path d="M1 9.5L7 3.5L13 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1 16.5L7 10.5L13 16.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    } @else {
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+        <path d="M1 1.5L7 7.5L13 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1 8.5L7 14.5L13 8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    }
+  </button>
+
+  <!-- Helpdesk FAB (speed-dial) -->
+  <div class="hero__fab" [class.hero__fab--open]="fabOpen">
+
+    <!-- Menú de acciones -->
+    <div class="hero__fab-menu" [class.hero__fab-menu--open]="fabOpen">
+      <a class="hero__fab-item" href="#soporte">
+        <span class="hero__fab-item-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </span>
+        Soporte online
+      </a>
+      <a class="hero__fab-item" href="#soporte">
+        <span class="hero__fab-item-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="6" width="8" height="14" rx="4"/><path d="M12 2v2M5 9H2M22 9h-3M5 14H2M22 14h-3M6.5 5l1.5 2M17.5 5L16 7"/>
+          </svg>
+        </span>
+        Reportar un bug
+      </a>
+      <a class="hero__fab-item" href="#soporte">
+        <span class="hero__fab-item-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </span>
+        Contribuir
+      </a>
+    </div>
+
+    <!-- Botón toggle -->
+    <button
+      class="hero__fab-toggle"
+      (click)="toggleFab()"
+      [attr.aria-expanded]="fabOpen"
+      [attr.aria-label]="fabOpen ? 'Cerrar menú de soporte' : 'Abrir menú de soporte'"
+    >
+      @if (fabOpen) {
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      } @else {
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      }
+    </button>
+  </div>
+
+</section>

@@ -1,0 +1,26 @@
+[
+  {
+    "version": "v1.3.0",
+    "date": "Ayer",
+    "type": "MINOR",
+    "active": true,
+    "title": "Implementación de nuevos componentes",
+    "description": "Se agregaron 2 nuevos componentes en Storybook: Carousel y Date Range Picker."
+  },
+  {
+    "version": "v1.2.8",
+    "date": "Hace 2 semanas",
+    "type": "PATCH",
+    "active": false,
+    "title": "Correcciones del CC Input Select",
+    "description": "Sincronización bidireccional de prop value."
+  },
+  {
+    "version": "v1.2.6",
+    "date": "Hace 1 mes",
+    "type": "PATCH",
+    "active": false,
+    "title": "Mejora del CC Sidenav v2",
+    "description": "Se implementó fix en dispositivos iOS."
+  }
+]

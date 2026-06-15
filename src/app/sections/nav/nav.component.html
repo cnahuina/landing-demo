@@ -1,0 +1,43 @@
+<div class="nav__wrapper" [class.scrolled]="scrolled">
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="nav__brand" href="#" (click)="$event.preventDefault(); scroll('inicio')">
+      <img src="logo-bricks.svg" alt="Bricks Design System" class="nav__logo" width="108" height="26" />
+    </a>
+
+    <div class="nav__right">
+      <ul class="nav__links" role="list">
+        @for (link of navLinks; track link.target) {
+          <li class="nav__item">
+            <button
+              type="button"
+              class="nav__link"
+              [class.active]="activeSection === link.target"
+              (click)="scroll(link.target)"
+            >
+              {{ link.label }}
+              <span class="nav__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+        }
+      </ul>
+      <button type="button" class="nav__cta" (click)="scroll('soporte')">Empezar</button>
+    </div>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      (click)="toggle()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Menú"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" [class.open]="menuOpen" [attr.aria-hidden]="!menuOpen">
+    @for (link of navLinks; track link.target) {
+      <button type="button" class="nav__mobile-link" (click)="scroll(link.target)">{{ link.label }}</button>
+    }
+    <button type="button" class="nav__mobile-cta" (click)="scroll('soporte')">Empezar</button>
+  </div>
+</div>

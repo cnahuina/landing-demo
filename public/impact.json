@@ -1,0 +1,40 @@
+{
+  "companies": [
+    { "name": "Pacasmayo",         "logo": "Logo.svg"       },
+    { "name": "Pacas Pro",         "logo": "pacaspro.svg"   },
+    { "name": "Bizner",            "logo": "bizner.svg"     },
+    { "name": "AYU",               "logo": "ayu.svg"        },
+    { "name": "Construye Experto", "logo": "construyex.svg" },
+    { "name": "Pentágono",         "logo": "pentagono.svg"  },
+    { "name": "Digou",             "logo": "digou.svg"      },
+    { "name": "Bilder",            "logo": "bilder.svg"     },
+    { "name": "La Cantera",        "logo": "lacantera.svg"  },
+    { "name": "iSiCOM",            "logo": "isicom.svg"     }
+  ],
+  "years": [
+    {
+      "year": 2025,
+      "stats": [
+        { "icon": "team",     "label": "Productos potenciados",            "value": "12",    "growth": "+10% vs año anterior" },
+        { "icon": "download", "label": "Reutilización de componentes",     "value": "+740k", "growth": "+12% vs año anterior" },
+        { "icon": "clock",    "label": "Tiempo (hrs) ganado para innovar", "value": "+49k",  "growth": "+10% vs año anterior" }
+      ]
+    },
+    {
+      "year": 2024,
+      "stats": [
+        { "icon": "team",     "label": "Productos potenciados",            "value": "9",     "growth": "+8% vs año anterior" },
+        { "icon": "download", "label": "Reutilización de componentes",     "value": "+520k", "growth": "+9% vs año anterior" },
+        { "icon": "clock",    "label": "Tiempo (hrs) ganado para innovar", "value": "+33k",  "growth": "+7% vs año anterior" }
+      ]
+    },
+    {
+      "year": 2023,
+      "stats": [
+        { "icon": "team",     "label": "Productos potenciados",            "value": "6",     "growth": "+5% vs año anterior" },
+        { "icon": "download", "label": "Reutilización de componentes",     "value": "+310k", "growth": "+6% vs año anterior" },
+        { "icon": "clock",    "label": "Tiempo (hrs) ganado para innovar", "value": "+18k",  "growth": "+4% vs año anterior" }
+      ]
+    }
+  ]
+}

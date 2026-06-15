@@ -1,0 +1,464 @@
+.feat {
+  // Figma: Componentes section x=152, width=1096 → narrow 152px side margins
+  // Total section height: 776px (Featured Components frame)
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+
+  // ── Trama vectorial decorativa (lado derecho) ─────────────────────────────
+  &__trama {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .container--narrow {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #111318;
+      margin: 0 0 8px;
+    }
+
+    p {
+      color: #5f636a;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  &__explore {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #FF9F1C;
+    border-radius: 12px;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: #1a0f00;
+    flex-shrink: 0;
+    // Figma: Button Complex width=484px
+    min-width: 320px;
+    height: 90px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background: #ffe2b8;
+      transform: translateY(-3px);
+
+      .feat__explore-arrow {
+        background: #ff900e;
+        color: #fff;
+        transform: translateX(4px);
+      }
+    }
+
+    span {
+      flex: 1;
+    }
+
+    strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    small {
+      display: block;
+      font-size: 0.8125rem;
+      opacity: 0.75;
+    }
+  }
+
+  &__explore-arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    button {
+      position: relative;
+      border: 0;
+      background: none;
+      color: #9ca3af;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+
+      &.active {
+        background: #ff900e;
+        color: #111318;
+        font-weight: 700;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 22px;
+          right: 22px;
+          bottom: -10px;
+          height: 3px;
+          border-radius: 999px;
+          background: #ff900e;
+        }
+      }
+
+      &.feat__tab--dev.active {
+        background: #bd1717;
+        color: #fff;
+
+        &::after {
+          background: #bd1717;
+        }
+      }
+
+      &:hover:not(.active) {
+        color: #111318;
+      }
+    }
+  }
+
+  &__panel {
+    border: 2px solid #ffcb80;
+    border-radius: 24px;
+    display: grid;
+    // Figma: panel 1096px total. Left (preview) ≈ 640px, right (copy) ≈ 456px
+    grid-template-columns: 59fr 41fr;
+    overflow: hidden;
+    // Figma: panel height=596px
+    min-height: 596px;
+
+    // ── Tema Desarrollo (rojo) ──────────────────────────────────────────────
+    &--dev {
+      border-color: #f3c4c3;
+
+      .feat__copy {
+        background: #fdf1f0;
+      }
+
+      .feat__preview {
+        border-right-color: #f3dada;
+      }
+
+      .feat__browser-dots {
+        border-bottom-color: #f3dada;
+      }
+    }
+  }
+
+  &__preview {
+    border-right: 1px solid #f0e0c8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__browser-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0e0c8;
+    background: #fafafa;
+
+    span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+  }
+
+  &__preview-label {
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-left: auto;
+  }
+
+  &__preview-body {
+    flex: 1;
+    padding: 40px 32px;
+    display: grid;
+    align-items: center;
+    background:
+      radial-gradient(#dde1e8 1px, transparent 1px);
+    background-size: 12px 12px;
+    gap: 16px;
+  }
+
+  &__annotation {
+    text-align: center;
+  }
+
+  &__annotation-tag {
+    font-size: 0.75rem;
+    background: #111318;
+    color: #fff;
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  &__component-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__nav-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #e6e8ed;
+    background: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+
+    &--active {
+      background: #111318;
+      color: #fff;
+      border-color: #111318;
+    }
+  }
+
+  &__checkbox-demo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: #111318;
+  }
+
+  &__checkbox-icon {
+    width: 20px;
+    height: 20px;
+    background: #4d79ff;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+  }
+
+  // ── Install graph (tab Desarrollo) ─────────────────────────────────────────
+  &__install {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__install-graph {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+  }
+
+  &__install-node {
+    position: relative;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px dashed #ff900e;
+    display: grid;
+    place-items: center;
+    color: #111318;
+    box-shadow: 0 0 0 6px rgba(255, 144, 14, 0.12);
+  }
+
+  &__install-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  &__install-pill {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e6e8ed;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+    font-size: 0.8125rem;
+    color: #111318;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    // Línea conectora hacia el nodo
+    &::before {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      width: 56px;
+      height: 1px;
+      background: #c8ccd3;
+    }
+  }
+
+  &__install-pager {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+
+    span {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: #d4d8df;
+
+      &.on {
+        background: #ff900e;
+      }
+    }
+  }
+
+  &__preview-footer {
+    background: #111318;
+    color: #fff;
+    font-size: 0.875rem;
+    padding: 12px 20px;
+  }
+
+  &__copy {
+    background: #fff9ef;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #1a0f00;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.9375rem;
+      color: #5f636a;
+      line-height: 1.65;
+      margin: 0;
+    }
+  }
+
+  &__copy-icons {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .fi {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #FF9F1C;
+
+    &-eye {
+      background: transparent;
+      border: 2px solid #111318;
+      border-radius: 50%;
+    }
+
+    &-sq {
+      background: #111318;
+
+      &--sm {
+        width: 12px;
+        height: 12px;
+        margin-top: 4px;
+      }
+
+      &--alt {
+        background: #b91312;
+      }
+
+      &--dark {
+        background: #3b2200;
+        width: 12px;
+        height: 12px;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1a0f00;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 4px;
+
+    &:hover {
+      color: #FF9F1C;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .feat {
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__explore {
+      min-width: 0;
+      width: 100%;
+    }
+
+    &__panel {
+      grid-template-columns: 1fr;
+    }
+
+    &__preview {
+      border-right: none;
+      border-bottom: 1px solid #f0e0c8;
+    }
+  }
+}

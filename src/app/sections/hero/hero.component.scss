@@ -1,0 +1,385 @@
+// ─── Hero ────────────────────────────────────────────────────────────────────
+// Figma: la sección es un bloque centrado al mismo ancho que las demás
+// (max-width: 1248px, margin-inline: auto).
+// El fondo naranja se mantiene dentro de ese ancho — no es full-bleed.
+// El strip naranja izquierdo se crea con padding-left sobre el wrapper.
+// La caja blanca interna (border-bottom-left-radius) cubre el resto del ancho.
+// ─────────────────────────────────────────────────────────────────────────────
+
+:host {
+  display: block;
+}
+
+.hero {
+  // ── Fondo naranja full width ─────────────────────────────────────────────
+  width: 100%;
+
+  position: relative;
+  background: #ff900e;
+  overflow: hidden;
+
+  // Background texture (trama-section.png)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/trama-section.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // ── Strip naranja + dots ──────────────────────────────────────────────────
+  // El wrapper agrega el padding-left que deja visible el strip naranja
+  &__wrapper {
+    position: relative;
+    padding-left: clamp(56px, 6.25vw, 280px);
+    z-index: 1;
+  }
+
+  // ── Side progress dots (en el strip izquierdo) ────────────────────────────
+  &__dots {
+    position: absolute;
+    left: clamp(14px, 2.8vw, 72px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    z-index: 10;
+  }
+
+  &__dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: height 0.2s, background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    &--active {
+      height: 36px;
+      background: #B5660A;
+      border-radius: 4px;
+    }
+  }
+
+  // ── Caja de contenido blanca (bleed hacia la derecha) ─────────────────────
+  &__content {
+    position: relative;
+    background: #fff;
+    border-bottom-left-radius: clamp(80px, 28vw, 380px);
+    padding-block: clamp(96px, 13vw, 200px) clamp(64px, 7vw, 100px);
+    z-index: 1;
+    min-height: clamp(480px, 50vw, 780px);
+  }
+
+  // ── Contenido centrado a 1248px ───────────────────────────────────────────
+  &__inner {
+    max-width: 1248px;
+    margin-inline: auto;
+    // Figma: 208px sobre 1920px → ×0.65 → 135px max a 1248px
+    padding-inline: clamp(20px, 10.8vw, 135px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 6vw, 80px);
+  }
+
+  // ── Title block (shapes + headline) ──────────────────────────────────────
+  &__title-block {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 2.4vw, 32px);
+    width: 100%;
+  }
+
+  // ── Shapes image ─────────────────────────────────────────────────────────
+  &__shapes {
+    display: block;
+    width: clamp(160px, 28vw, 360px);
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  // ── Headline ──────────────────────────────────────────────────────────────
+  &__headline {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.6vw, 10px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__hl-line1 {
+    display: block;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 800;
+    // Figma: 175px sobre 1920px → ×0.65 → 114px max a 1248px
+    font-size: clamp(40px, 9.1vw, 114px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #5d3405;
+    white-space: nowrap;
+  }
+
+  &__hl-line2 {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(10px, 1.4vw, 20px);
+    width: 100%;
+  }
+
+  &__hl-before {
+    text-align: left;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 800;
+    // Figma: 115px sobre 1920px → ×0.65 → 75px max
+    font-size: clamp(26px, 6vw, 75px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #5d3405;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__hl-mark {
+    display: inline-flex;
+    align-items: center;
+    background: #fff4e7;
+    border-radius: clamp(12px, 2vw, 28px);
+    padding: 0.06em clamp(12px, 2vw, 28px);
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 6vw, 75px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #5d3405;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  // ── Meta row ──────────────────────────────────────────────────────────────
+  &__meta {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(12px, 1.2vw, 18px);
+    padding-left: clamp(0px, 22%, 280px);
+  }
+
+  &__version {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    color: #5c5c5c;
+    font-size: clamp(0.75rem, 1vw, 0.9375rem);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  &__version-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff900e;
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow:
+      0 0 1px 0 rgba(255,229,132,0.79),
+      0 1px 3px 0 rgba(255,229,132,0.68),
+      0 3px 4px 0 rgba(255,229,132,0.4),
+      0 5px 6px 0 rgba(255,229,132,0.12);
+  }
+
+  &__separator {
+    align-self: flex-start;
+    width: clamp(48px, 5vw, 80px);
+    height: 1px;
+    background: #ffcc90;
+    margin-top: clamp(10px, 1.1vw, 16px);
+    flex-shrink: 0;
+    border-radius: 999px;
+  }
+
+  &__copy {
+    flex: 1 0 0;
+    color: #5c5c5c;
+    font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+    font-weight: 500;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  // ── Scroll-to-next button ─────────────────────────────────────────────────
+  &__scroll-next {
+    position: fixed;
+    left: clamp(24px, 3.4vw, 76px);
+    bottom: clamp(400px, 4vw, 160px);
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    color: #ff900e;
+    border: 2px solid rgba(255, 144, 14, 0.25);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    transition: transform 0.2s, background 0.2s;
+    z-index: 10;
+    &:hover {
+      transform: translateX(-50%) translateY(3px);
+      background: #fff4e7;
+    }
+
+    &:active {
+      transform: translateX(-50%) translateY(5px);
+    }
+  }
+
+  // ── Helpdesk FAB (speed-dial) ───────────────────────────────────────────────
+  &__fab {
+    position: fixed;
+    bottom: 36px;
+    right: 40px;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  &__fab-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+
+    &--open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__fab-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #151515;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+    transition: transform 0.15s, box-shadow 0.15s;
+
+    &:hover {
+      transform: translateX(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__fab-item-icon {
+    display: grid;
+    place-items: center;
+    color: #ff900e;
+    flex-shrink: 0;
+  }
+
+  &__fab-toggle {
+    align-self: flex-end;
+    width: 52px;
+    height: 52px;
+    background: #151515;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: background 0.2s, transform 0.2s, color 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__fab--open &__fab-toggle {
+    background: #fff;
+    color: #5c5c5c;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+@media (max-width: 900px) {
+  .hero {
+    &__hl-line2 {
+      flex-wrap: wrap;
+    }
+
+    &__hl-before {
+      flex: 0 1 auto;
+      text-align: left;
+    }
+
+    &__meta {
+      padding-left: 0;
+      flex-wrap: wrap;
+    }
+
+    &__separator {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    &__wrapper {
+      padding-left: 0;
+    }
+
+    &::before { display: none; }
+
+    &__dots,
+    &__scroll-next {
+      display: none;
+    }
+
+    &__content {
+      border-bottom-left-radius: 40px;
+    }
+
+    &__fab {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    &__fab-toggle {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}
