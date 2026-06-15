@@ -106,3 +106,26 @@
     gap: 16px;
   }
 }
+
+@media (max-width: 600px) {
+  .gl__inner {
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  // Enlaces en cuadrícula de 3 columnas.
+  .gl__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 10px;
+    width: 100%;
+  }
+
+  .gl__link {
+    align-items: flex-start;
+    gap: 6px;
+    white-space: normal;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+  }
+}
