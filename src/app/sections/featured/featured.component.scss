@@ -454,11 +454,87 @@
 
     &__panel {
       grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    // Permite que las columnas del grid encojan en vez de forzar overflow.
+    &__preview,
+    &__copy {
+      min-width: 0;
     }
 
     &__preview {
       border-right: none;
       border-bottom: 1px solid #f0e0c8;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .feat {
+    padding: 56px 0;
+
+    &__tabs {
+      gap: 8px;
+
+      button {
+        flex: 1;
+        padding: 10px 12px;
+        text-align: center;
+      }
+    }
+
+    &__preview-body {
+      padding: 28px 18px;
+    }
+
+    // Diseño: la fila de componente puede encoger.
+    &__component-row {
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    // Desarrollo: el grafo de instalación se apila para no desbordar.
+    &__install {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__install-graph {
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    &__install-pills {
+      width: 100%;
+      gap: 12px;
+    }
+
+    &__install-pill {
+      width: 100%;
+      box-sizing: border-box;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      text-align: center;
+
+      // Sin línea conectora cuando está apilado.
+      &::before {
+        display: none;
+      }
+    }
+
+    // Flechas decorativas ocultas en móvil (ahorran ancho).
+    &__nav-btn {
+      display: none;
+    }
+
+    &__copy {
+      padding: 28px 22px;
+
+      h3 {
+        font-size: 1.4rem;
+      }
     }
   }
 }
