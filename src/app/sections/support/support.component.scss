@@ -75,7 +75,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+
+    // El espaciado entre campos lo controla el grid-gap; se evitan márgenes
+    // dobles de los campos internos.
+    .sp__field { margin-bottom: 0; }
   }
 
   &__field {
