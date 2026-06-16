@@ -24,7 +24,7 @@
 
   &__top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 24px;
     margin-bottom: 32px;
@@ -53,7 +53,7 @@
     padding: 20px 20px;
     text-decoration: none;
     color: #1a0f00;
-    flex-shrink: 0;
+    flex: 1;
     // Figma: Button Complex width=484px
     min-width: 320px;
     height: 90px;
@@ -442,6 +442,21 @@
     &:hover {
       color: #FF9F1C;
     }
+  }
+}
+
+// ── Desktop: +56px de padding lateral (sobre el padding base del contenedor) ──
+@media (min-width: 1369px) {
+  .feat .container--narrow {
+    // Base global 40px + 56px
+    padding-inline: 96px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1368px) {
+  .feat .container--narrow {
+    // Base global 32px + 56px
+    padding-inline: 88px;
   }
 }
 

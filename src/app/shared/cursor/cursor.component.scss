@@ -1,0 +1,13 @@
+:host {
+  display: contents;
+}
+
+.curzr-arrow-pointer {
+  // El posicionamiento (fixed, top/left, transform, etc.) lo aplica el
+  // componente vía estilos inline para reproducir el comportamiento de Curzr.
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

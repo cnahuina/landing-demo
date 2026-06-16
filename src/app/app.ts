@@ -9,6 +9,7 @@ import { ImpactComponent } from './sections/impact/impact.component';
 import { ChangelogComponent } from './sections/changelog/changelog.component';
 import { SupportComponent } from './sections/support/support.component';
 import { FooterComponent } from './sections/footer/footer.component';
+import { CursorComponent } from './shared/cursor/cursor.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { FooterComponent } from './sections/footer/footer.component';
     ImpactComponent,
     ChangelogComponent,
     SupportComponent,
-    FooterComponent
+    FooterComponent,
+    CursorComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

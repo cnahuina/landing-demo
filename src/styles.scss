@@ -33,6 +33,16 @@ a {
 }
 
 // ─────────────────────────────────────────
+// Cursor personalizado (Curzr · Arrow Pointer)
+// Solo oculta el cursor nativo cuando el CursorComponent está activo
+// (dispositivos con puntero preciso y sin movimiento reducido).
+// ─────────────────────────────────────────
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+// ─────────────────────────────────────────
 // Container global — 1288px centrado
 // ─────────────────────────────────────────
 
