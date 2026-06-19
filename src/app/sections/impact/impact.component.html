@@ -118,7 +118,7 @@
             </div>
           </div>
 
-          <strong class="impact__stat-value">{{ stat.value }}</strong>
+          <strong class="impact__stat-value" [appCountUp]="stat.value"></strong>
           <span class="impact__stat-growth">{{ stat.growth }}</span>
 
         </li>

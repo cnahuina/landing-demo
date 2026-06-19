@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CountUpDirective } from '../../shared/count-up/count-up.directive';
 
 interface Stat {
   icon: string;
@@ -26,6 +27,7 @@ interface ImpactData {
 @Component({
   selector: 'app-impact',
   standalone: true,
+  imports: [CountUpDirective],
   templateUrl: './impact.component.html',
   styleUrl: './impact.component.scss'
 })
