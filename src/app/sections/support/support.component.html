@@ -56,12 +56,28 @@
             ></textarea>
           </div>
 
+          <!-- Honeypot anti-spam: oculto para usuarios reales -->
+          <input
+            type="text"
+            formControlName="_honey"
+            class="sp__honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+
+          @if (errorMessage) {
+            <p class="sp__error" role="alert">{{ errorMessage }}</p>
+          }
+
           <div class="sp__actions">
-            <button type="submit" class="sp__submit">
-              Crear ticket
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
+            <button type="submit" class="sp__submit" [disabled]="submitting">
+              {{ submitting ? 'Enviando…' : 'Crear ticket' }}
+              @if (!submitting) {
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              }
             </button>
           </div>
         </form>
