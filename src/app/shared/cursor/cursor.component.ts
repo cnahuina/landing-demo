@@ -58,6 +58,11 @@ export class CursorComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
+    // Sin matchMedia (p. ej. jsdom/entornos no-navegador) no activamos el cursor.
+    if (typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     const finePointer = window.matchMedia('(pointer: fine)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
