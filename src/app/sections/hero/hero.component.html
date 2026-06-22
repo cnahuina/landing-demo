@@ -3,20 +3,6 @@
   <!-- 1248px centered wrapper (igual que el Nav) -->
   <div class="hero__wrapper">
 
-    <!-- Dots de progreso en el strip naranja izquierdo -->
-    <nav class="hero__dots" aria-label="Progreso de sección">
-      @for (section of sections; track section.id) {
-        <button
-          type="button"
-          class="hero__dot"
-          [class.hero__dot--active]="activeSection === section.id"
-          (click)="scrollTo(section.id)"
-          [attr.aria-label]="section.label"
-          [attr.aria-current]="activeSection === section.id ? 'true' : null"
-        ></button>
-      }
-    </nav>
-
     <!-- Caja blanca -->
     <div class="hero__content">
 
@@ -61,25 +47,43 @@
 
   </div><!-- /hero__wrapper -->
 
-  <!-- Scroll to next section / back to top -->
-  <button
-    class="hero__scroll-next"
-    [class.hero__scroll-next--up]="atBottom"
-    (click)="scrollToNext()"
-    [attr.aria-label]="atBottom ? 'Volver arriba' : 'Ir a la siguiente sección'"
-  >
-    @if (atBottom) {
-      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
-        <path d="M1 9.5L7 3.5L13 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M1 16.5L7 10.5L13 16.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    } @else {
-      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
-        <path d="M1 1.5L7 7.5L13 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M1 8.5L7 14.5L13 8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    }
-  </button>
+  <!-- Riel lateral fijo: dots de progreso + botón scroll-next (separados 24px) -->
+  <div class="hero__rail">
+
+    <!-- Dots de progreso en el strip naranja izquierdo -->
+    <nav class="hero__dots" aria-label="Progreso de sección">
+      @for (section of sections; track section.id) {
+        <button
+          type="button"
+          class="hero__dot"
+          [class.hero__dot--active]="activeSection === section.id"
+          (click)="scrollTo(section.id)"
+          [attr.aria-label]="section.label"
+          [attr.aria-current]="activeSection === section.id ? 'true' : null"
+        ></button>
+      }
+    </nav>
+
+    <!-- Scroll to next section / back to top -->
+    <button
+      class="hero__scroll-next"
+      [class.hero__scroll-next--up]="atBottom"
+      (click)="scrollToNext()"
+      [attr.aria-label]="atBottom ? 'Volver arriba' : 'Ir a la siguiente sección'"
+    >
+      @if (atBottom) {
+        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+          <path d="M1 9.5L7 3.5L13 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 16.5L7 10.5L13 16.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      } @else {
+        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+          <path d="M1 1.5L7 7.5L13 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 8.5L7 14.5L13 8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      }
+    </button>
+  </div>
 
   <!-- Helpdesk FAB (speed-dial) -->
   <div class="hero__fab" [class.hero__fab--open]="fabOpen">

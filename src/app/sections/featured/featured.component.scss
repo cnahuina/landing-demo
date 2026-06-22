@@ -57,11 +57,10 @@
     // Figma: Button Complex width=484px
     min-width: 320px;
     height: 90px;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background 0.2s ease;
 
     &:hover {
       background: #ffe2b8;
-      transform: translateY(-3px);
 
       .feat__explore-arrow {
         background: #ff900e;

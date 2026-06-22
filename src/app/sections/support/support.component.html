@@ -31,17 +31,40 @@
               />
             </div>
             <div class="sp__field">
-              <label for="type">Tipo de ticket <span aria-hidden="true">*</span></label>
-              <select
-                id="type"
-                formControlName="type"
-                [class.error]="form.controls['type'].invalid && form.controls['type'].touched"
-              >
-                <option value="" disabled>Elija un ticket</option>
-                @for (t of ticketTypes; track t) {
-                  <option [value]="t">{{ t }}</option>
+              <label id="type-label">Tipo de ticket <span aria-hidden="true">*</span></label>
+              <div class="sp__select">
+                <button
+                  type="button"
+                  class="sp__select-trigger"
+                  [class.placeholder]="!form.controls['type'].value"
+                  [class.open]="typeMenuOpen"
+                  [class.error]="form.controls['type'].invalid && form.controls['type'].touched"
+                  (click)="toggleTypeMenu(); $event.stopPropagation()"
+                  aria-haspopup="listbox"
+                  [attr.aria-expanded]="typeMenuOpen"
+                  aria-labelledby="type-label"
+                >
+                  <span>{{ form.controls['type'].value || 'Elija un ticket' }}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                @if (typeMenuOpen) {
+                  <ul class="sp__select-menu" role="listbox" aria-labelledby="type-label">
+                    @for (t of ticketTypes; track t) {
+                      <li
+                        class="sp__select-option"
+                        [class.selected]="t === form.controls['type'].value"
+                        role="option"
+                        [attr.aria-selected]="t === form.controls['type'].value"
+                        (click)="selectType(t); $event.stopPropagation()"
+                      >
+                        {{ t }}
+                      </li>
+                    }
+                  </ul>
                 }
-              </select>
+              </div>
             </div>
           </div>
 

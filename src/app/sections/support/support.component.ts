@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -25,6 +25,7 @@ export class SupportComponent {
   submitted = false;
   submitting = false;
   errorMessage = '';
+  typeMenuOpen = false;
 
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -33,6 +34,26 @@ export class SupportComponent {
     // Honeypot anti-spam: debe quedar vacío (oculto en la UI).
     _honey: ['']
   });
+
+  toggleTypeMenu(): void {
+    this.typeMenuOpen = !this.typeMenuOpen;
+  }
+
+  selectType(type: string): void {
+    this.form.controls.type.setValue(type);
+    this.form.controls.type.markAsTouched();
+    this.typeMenuOpen = false;
+  }
+
+  @HostListener('document:click')
+  closeTypeMenu(): void {
+    this.typeMenuOpen = false;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.typeMenuOpen = false;
+  }
 
   submit(): void {
     if (this.submitting) {
